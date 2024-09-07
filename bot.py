@@ -9,7 +9,7 @@ from telegram.ext import (
         filters,
     )
 
-from Database import database_init
+# from Database import database_init
 from Handlers.buttons import reading_button, detail_button, start_button
 from Handlers.commands import start, unknown_command
 
@@ -19,7 +19,7 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 
 def main():
-    database_init()
+    # database_init()
 
     app = (
         Application.builder()
@@ -40,6 +40,7 @@ def main():
             reading_button,
             '^reading_'
         )
+
     unknown_command_handler = MessageHandler(filters.COMMAND,
                                              unknown_command)
 

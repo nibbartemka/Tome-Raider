@@ -1,2 +1,2 @@
 from .Book import Book
-from .BookReader import Reader
+from .BookReader import Reader, BookReader

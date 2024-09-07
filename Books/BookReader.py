@@ -13,37 +13,50 @@ class Reader(Protocol):
     def previous_page(self) -> None:
         pass
 
+    def move_to_page(self, page_number: int) -> None:
+        pass
+
 
 class BookReader(object):
     def __init__(self, book) -> None:
-        self.book: Book = book
-        self.current_page_index: int = 0
+        self.__book: Book = book
+        self.__current_page_index: int = 0
 
     @property
     def progress(self) -> str:
-        return f'{self.current_page_index + 1}/{len(self.book.pages)}'
+        return f'{self.__current_page_index + 1}/{len(self.__book.pages)}'
+
+    @property
+    def book(self) -> Book:
+        return self.__book
+
+    @property
+    def current_page_index(self) -> int:
+        return self.__current_page_index
 
     def next_page(self) -> None:
         if self.has_next_page():
-            self.current_page_index += 1
+            self.__current_page_index += 1
 
     def previous_page(self) -> None:
         if self.has_previous_page():
-            self.current_page_index -= 1
+            self.__current_page_index -= 1
 
-    def move_to_page(self, page_index: int) -> None:
-        if not (0 <= page_index <= len(self.book.pages) - 1):
+    def move_to_page(self, page_number: int) -> None:
+        page_index: int = page_number - 1
+
+        if not (0 <= page_index <= len(self.__book.pages) - 1):
             raise ValueError(
                 "Incorrect page number. Please retry and enter correct value"
             )
 
-        self.current_page_index = page_index
+        self.__current_page_index = page_index
 
     def has_next_page(self) -> bool:
-        return self.current_page_index + 1 < len(self.book.pages)
+        return self.__current_page_index + 1 < len(self.__book.pages)
 
     def has_previous_page(self) -> bool:
-        return self.current_page_index - 1 > -1
+        return self.__current_page_index - 1 > -1
 
     def get_current_page(self) -> str:
-        return self.book.pages[self.current_page_index]
+        return self.__book.pages[self.__current_page_index]

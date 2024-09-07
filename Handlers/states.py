@@ -6,6 +6,7 @@ class ReadingState(enum.StrEnum):
     SELECT_PAGE = 'reading_select_page'
     NEXT_PAGE = 'reading_next_page'
     PREVIOUS_PAGE = 'reading_previous_page'
+    ADD_BOOKMARK = 'reading_add_bookmark'
     RETURN = 'reading_return'
 
 

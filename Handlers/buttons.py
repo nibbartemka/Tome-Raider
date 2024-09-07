@@ -21,7 +21,7 @@ async def detail_button(update: Update, context:
             await reading(query, context)
         case DetailState.RATE.value:
             # Добавить функционал
-            pass
+            raise NotImplementedError()
         case DetailState.RETURN.value:
             # Пока на главный экран возвращаем, потом на поиск
             await start(query, context)
@@ -48,6 +48,9 @@ async def reading_button(update: Update,
             await update_page(query, context)
         case ReadingState.RETURN.value:
             await detail(query, context)
+        case ReadingState.ADD_BOOKMARK.value:
+            # await add_bookmark(query, context)
+            raise NotImplementedError()
         case _:
             pass
 
@@ -64,6 +67,6 @@ async def start_button(update: Update,
             await detail(query, context)
         case StartState.GO_TO_BOOKMARKS.value:
             # Добавить
-            pass
+            raise NotImplementedError()
         case _:
             pass

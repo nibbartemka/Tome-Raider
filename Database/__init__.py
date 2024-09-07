@@ -10,4 +10,4 @@ Modules:
 - config: settings for database.
 '''
 
-from .db_init import database_init
+# from .db_init import database_init
